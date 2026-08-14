@@ -1,0 +1,21 @@
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Go build / runtime
+bin/
+dist/
+tmp/
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.log
+coverage.out
+coverage.html
+
+# env
+.env
+.env.*
