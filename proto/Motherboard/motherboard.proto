@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package motherboard.v1;
+
+import "buf/validate/validate.proto";
+
+message MotherboardRequest {
+  string name = 1 [(buf.validate.field).string = {
+    min_len: 1,
+    max_len: 100,
+  }];
+  int32 color = 2;
+  int32 page_number = 3; 
+  int32 result_per_page = 4;
+}   
+
+message MotherboardResponse {
+  string name = 1;
+  string color = 2;
+  float price = 3;  
+}
+
+message PostMotherboardRequest {
+  string description = 1 [(buf.validate.field).string = {
+    min_len: 1,
+    max_len: 100,
+  }];
+  int32 color_id = 2;
+  int32 manufacturer_id = 3;
+}   
+
+message PostMotherboardResponse {
+  string id = 1;   
+}
+
+service MotherboardService {
+  rpc PostMotherboard(PostMotherboardRequest) returns (PostMotherboardResponse) {}
+  rpc GetMotherboard(MotherboardRequest) returns (MotherboardResponse) {}
+}
